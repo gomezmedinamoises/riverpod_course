@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_course/features/change_notifier/presentation/screens/todo_screen.dart';
 import 'package:riverpod_course/features/core/presentation/widgets/custom_button.dart';
 import 'package:riverpod_course/features/provider/screens/auto_dispose/auto_dispose_screen.dart';
 import 'package:riverpod_course/features/provider/screens/auto_dispose_family/auto_dispose_family_screen.dart';
@@ -52,6 +53,10 @@ class MyHomePage extends StatelessWidget {
           shrinkWrap: true,
           padding: const EdgeInsets.all(20),
           children: const [
+            CustomButton(
+              title: 'ChangeNotifier Provider',
+              child: TodoScreen(),
+            ),
             CustomButton(
               title: 'Stream Provider',
               child: TickerScreen(),
