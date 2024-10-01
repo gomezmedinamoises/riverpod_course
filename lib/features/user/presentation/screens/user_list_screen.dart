@@ -15,24 +15,30 @@ class UserListScreen extends ConsumerWidget {
         ),
         body: userList.when(
           data: (users) {
-            return ListView.separated(
-              itemCount: users.length,
-              separatorBuilder: (context, index) => const Divider(),
-              itemBuilder: (context, index) {
-                final user = users[index];
+            return RefreshIndicator(
+              onRefresh: () async => ref.invalidate(userListProvider),
+              color: Colors.red,
+              child: ListView.separated(
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemCount: users.length,
+                separatorBuilder: (context, index) => const Divider(),
+                itemBuilder: (context, index) {
+                  final user = users[index];
 
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                      return UserDetailsScreen(userId: user.id);
-                    }));
-                  },
-                  child: ListTile(
-                    leading: CircleAvatar(child: Text(user.id.toString())),
-                    title: Text(user.name),
-                  ),
-                );
-              },
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) {
+                        return UserDetailsScreen(userId: user.id);
+                      }));
+                    },
+                    child: ListTile(
+                      leading: CircleAvatar(child: Text(user.id.toString())),
+                      title: Text(user.name),
+                    ),
+                  );
+                },
+              ),
             );
           },
           error: (error, stackTrace) {

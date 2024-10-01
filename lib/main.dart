@@ -8,6 +8,7 @@ import 'package:riverpod_course/features/provider/screens/family/family_screen.d
 import 'package:riverpod_course/features/state_provider/screens/auto_dispose/auto_dispose_state_provider_screen.dart';
 import 'package:riverpod_course/features/state_provider/screens/basic/basic_state_provider_screen.dart';
 import 'package:riverpod_course/features/state_provider/screens/family/family_state_provider_screen.dart';
+import 'package:riverpod_course/features/stream_provider/presentation/ticker_screen.dart';
 import 'package:riverpod_course/features/user/presentation/screens/user_list_screen.dart';
 
 import 'features/provider/screens/auto_dispose_test_family/auto_dispose_family_test_screen.dart';
@@ -51,6 +52,10 @@ class MyHomePage extends StatelessWidget {
           shrinkWrap: true,
           padding: const EdgeInsets.all(20),
           children: const [
+            CustomButton(
+              title: 'Stream Provider',
+              child: TickerScreen(),
+            ),
             CustomButton(
               title: 'User list',
               child: UserListScreen(),
